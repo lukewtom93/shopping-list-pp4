@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from shopping_list import views as index_views
+
 
 urlpatterns = [
-    path('', index_views.index, name='index'),
+    path('', include("shopping_list.urls"), name="shopping_list-urls"),
     path('admin/', admin.site.urls),
 ]
