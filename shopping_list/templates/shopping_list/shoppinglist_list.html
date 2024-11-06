@@ -1,0 +1,14 @@
+<h1>Shopping List</h1>
+
+<table>
+    <tr>
+        <th>Item</th>
+    </tr>
+    {% for item in items %}
+    <tr>
+        <td>{{item.title}}</td>
+    </tr>
+    {% empty %}
+        <h3>No items</h3>
+    {% endfor %}
+</table>

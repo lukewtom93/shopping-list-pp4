@@ -6,3 +6,8 @@ from .models import ShoppingList
 
 class shopping_list(generic.ListView):
     model = ShoppingList
+    context_object_name = 'items'
+
+
+class list_items(generic.DetailView):
+    model = ShoppingList
