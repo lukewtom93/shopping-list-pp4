@@ -11,3 +11,5 @@ class shopping_list(generic.ListView):
 
 class list_items(generic.DetailView):
     model = ShoppingList
+    context_object_name = 'list'
+    template_name = 'shopping_list/list.html'
