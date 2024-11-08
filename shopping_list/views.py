@@ -16,7 +16,13 @@ class ListsItems(generic.DetailView):
     template_name = 'shopping_list/list_items.html'
 
 
-class CreateList(generic.CreateView):
+class CreateList(generic.edit.CreateView):
+    model = ShoppingList
+    fields = '__all__'
+    success_url = reverse_lazy('shopping-list')
+
+
+class UpdateList(generic.edit.UpdateView):
     model = ShoppingList
     fields = '__all__'
     success_url = reverse_lazy('shopping-list')
