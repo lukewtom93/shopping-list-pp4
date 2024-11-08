@@ -4,12 +4,12 @@ from .models import ShoppingList
 
 # Create your views here.
 
-class shopping_list(generic.ListView):
+class ShoppingLists(generic.ListView):
+    model = ShoppingList
+    context_object_name = 'lists'
+
+
+class ListsItems(generic.DetailView):
     model = ShoppingList
     context_object_name = 'items'
-
-
-class list_items(generic.DetailView):
-    model = ShoppingList
-    context_object_name = 'list'
-    template_name = 'shopping_list/list.html'
+    template_name = 'shopping_list/list_items.html'

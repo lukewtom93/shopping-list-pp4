@@ -4,10 +4,10 @@
     <tr>
         <th>Item</th>
     </tr>
-    {% for item in items %}
+    {% for list in lists %}
     <tr>
-        <td>{{item.title}}</td>
-        <td><a href="{% url 'list' item.id %}">view</a></td>
+        <td>{{list.title}}</td>
+        <td><a href="{% url 'list' list.id %}">view</a></td>
     </tr>
     {% empty %}
         <h3>No items</h3>
