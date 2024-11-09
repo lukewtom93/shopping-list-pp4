@@ -21,6 +21,12 @@ class ShoppingLists(LoginRequiredMixin, generic.ListView):
     model = ShoppingList
     context_object_name = 'lists'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['lists'] = context['lists'].filter(user = self.request.user)
+        context['count'] = context['lists'].filter(complete=False)
+        return context
+
 
 class ListItems(LoginRequiredMixin, generic.DetailView):
     model = ShoppingList
