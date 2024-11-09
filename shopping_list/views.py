@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import ShoppingList
+from .models import ShoppingList, Item
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -10,9 +10,15 @@ class ShoppingLists(generic.ListView):
     context_object_name = 'lists'
 
 
-class ListsItems(generic.DetailView):
+class ListItems(generic.DetailView):
     model = ShoppingList
     context_object_name = 'items'
+    template_name = 'shopping_list/list_items.html'
+
+
+class Items(generic.DetailView):
+    model = Item
+    context_object_name = 'item'
     template_name = 'shopping_list/list_items.html'
 
 
