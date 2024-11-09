@@ -8,7 +8,7 @@ from django.contrib.auth.views import LoginView
 # Create your views here.
 
 class Login(LoginView):
-    template_engine = 'shopping_list/login.html'
+    template_name = 'shopping_list/login.html'
     fields = '__all__'
     redirect_authenticated_user = True
 

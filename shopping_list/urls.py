@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('login/', views.Login.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('', views.ShoppingLists.as_view(), name='shopping-list'),
     path('shopping-list/<int:pk>/', views.ListItems.as_view(), name='list'),
     path('create-list', views.CreateList.as_view(), name='create-list'),
