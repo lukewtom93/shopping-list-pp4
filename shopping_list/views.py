@@ -4,6 +4,7 @@ from .models import ShoppingList
 from django.urls import reverse_lazy
 
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin 
 
 # Create your views here.
 
@@ -16,30 +17,30 @@ class Login(LoginView):
         return reverse_lazy('shopping-list')
 
 
-class ShoppingLists(generic.ListView):
+class ShoppingLists(LoginRequiredMixin, generic.ListView):
     model = ShoppingList
     context_object_name = 'lists'
 
 
-class ListItems(generic.DetailView):
+class ListItems(LoginRequiredMixin, generic.DetailView):
     model = ShoppingList
     context_object_name = 'items'
     template_name = 'shopping_list/list_items.html'
     
 
-class CreateList(generic.CreateView):
+class CreateList(LoginRequiredMixin, generic.CreateView):
     model = ShoppingList
     fields = '__all__'
     success_url = reverse_lazy('shopping-list')
 
 
-class UpdateList(generic.UpdateView):
+class UpdateList(LoginRequiredMixin, generic.UpdateView):
     model = ShoppingList
     fields = '__all__'
     success_url = reverse_lazy('shopping-list')
 
 
-class DeleteList(generic.DeleteView):
+class DeleteList(LoginRequiredMixin, generic.DeleteView):
     model = ShoppingList
     context_object_name = 'list'
     success_url = reverse_lazy('shopping-list')
