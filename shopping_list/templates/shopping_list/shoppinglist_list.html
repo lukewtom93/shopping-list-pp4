@@ -14,10 +14,10 @@
     <tr>
         <th>Item</th>
     </tr>
+    {{form.as_p}}
     {% for list in lists %}
     <tr>
-        <td>{{list.title}}</td>
-        <td><a href="{% url 'list' list.id %}">view</a></td>
+        <td>{{list.title}}: {{list.quantity}}</td>
         <td><a href="{% url 'update-list' list.id %}">Edit</a></td>
         <td><a href="{% url 'delete-list' list.id %}">Delete</a></td>
     </tr>

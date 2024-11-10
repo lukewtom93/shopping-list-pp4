@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import ShoppingList, Item
+from .models import ShoppingList
 from django.urls import reverse_lazy
 
 from django.contrib.auth.views import LoginView
@@ -9,11 +9,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
 # Create your views here.
-class Item(generic.ListView):
-    model = Item
-    context_object_name = 'items'
-    template_name = 'shopping_list/item_list.html'
-
 
 class Login(LoginView):
     template_name = 'shopping_list/login.html'
@@ -46,17 +41,11 @@ class ShoppingLists(LoginRequiredMixin, generic.ListView):
         context['lists'] = context['lists'].filter(user = self.request.user)
         context['count'] = context['lists'].filter(complete=False)
         return context
-
-
-class ListItems(LoginRequiredMixin, generic.DetailView):
-    model = ShoppingList
-    context_object_name = 'items'
-    template_name = 'shopping_list/list_items.html'
     
 
 class CreateList(LoginRequiredMixin, generic.CreateView):
     model = ShoppingList
-    fields = ['title', 'complete']
+    fields = ['title', 'quantity']
     success_url = reverse_lazy('shopping-list')
 
     def form_valid(self, form):
@@ -65,7 +54,7 @@ class CreateList(LoginRequiredMixin, generic.CreateView):
 
 class UpdateList(LoginRequiredMixin, generic.UpdateView):
     model = ShoppingList
-    fields = ['title', 'complete']
+    fields = ['title', 'quantity']
     success_url = reverse_lazy('shopping-list')
 
 
