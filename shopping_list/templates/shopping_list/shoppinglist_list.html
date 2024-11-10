@@ -1,31 +1,31 @@
 {% extends 'shopping_list/main.html' %}
 {% block content %}
 {%  if request.user.is_authenticated %}
-    <p>{{request.user}}</p>
-    <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-    <a href="{% url 'login' %}">Login</a>
+<p>{{request.user}}</p>
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
 {% endif %}
 
 
 <hr>
 <h1>Shopping List</h1>
 <a href="{% url 'create-list' %}">Add</a>
-<table>
+<table id="items-list">
     <tr>
         <th>Item</th>
     </tr>
     {{form.as_p}}
     {% for list in lists %}
     <tr>
-        <td>{{list.title}}: {{list.quantity}}</td>
+        <td data-item-id="{{ list.id }}" class="shopping-item {% if list.complete %}completed{% endif %}">{{list.title}}:
+            {{list.quantity}}</td>
         <td><a href="{% url 'update-list' list.id %}">Edit</a></td>
         <td><a href="{% url 'delete-list' list.id %}">Delete</a></td>
     </tr>
     {% empty %}
-        <h3>No items</h3>
+    <h3>No items</h3>
     {% endfor %}
 </table>
 
 {% endblock content %}
-
