@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from .models import ShoppingList
 from django.urls import reverse_lazy
@@ -30,6 +30,11 @@ class Register(generic.FormView):
         if user is not None:
             login(self.request, user)
         return super(Register, self).form_valid(form)
+
+    def get(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect('shopping-list')
+        return super(Register, self).get(*args, **kwargs)
 
 
 class ShoppingLists(LoginRequiredMixin, generic.ListView):
