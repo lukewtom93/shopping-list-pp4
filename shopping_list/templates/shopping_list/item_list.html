@@ -1,0 +1,27 @@
+
+{%  if request.user.is_authenticated %}
+    <p>{{request.user}}</p>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+{% endif %}
+
+
+<hr>
+<h1>{{ ShopingList.title }}</h1>
+<a href="{% url 'create-list' %}">Add</a>
+<table>
+    <tr>
+        <th>Item</th>
+    </tr>
+    {% for item in items %}
+    <tr>
+        <td>{{item.name}}</td>
+        <td><a href="{% url 'list' item.id %}">view</a></td>
+        <td><a href="{% url 'update-list' item.id %}">Edit</a></td>
+        <td><a href="{% url 'delete-list' item.id %}">Delete</a></td>
+    </tr>
+    {% empty %}
+        <h3>No items</h3>
+    {% endfor %}
+</table>

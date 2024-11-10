@@ -1,12 +1,19 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import ShoppingList
+from .models import ShoppingList, Item
 from django.urls import reverse_lazy
 
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.mixins import LoginRequiredMixin 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 
 # Create your views here.
+class Item(generic.ListView):
+    model = Item
+    context_object_name = 'items'
+    template_name = 'shopping_list/item_list.html'
+
 
 class Login(LoginView):
     template_name = 'shopping_list/login.html'
@@ -15,6 +22,19 @@ class Login(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('shopping-list')
+
+
+class Register(generic.FormView):
+    template_name = 'shopping_list/register.html'
+    form_class = UserCreationForm
+    redirect_authenticated_user = True
+    success_url = reverse_lazy('shopping-list')
+
+    def form_valid(self, form):
+        user = form.save()
+        if user is not None:
+            login(self.request, user)
+        return super(Register, self).form_valid(form)
 
 
 class ShoppingLists(LoginRequiredMixin, generic.ListView):
