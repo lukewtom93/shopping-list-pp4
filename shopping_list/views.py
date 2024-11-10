@@ -36,13 +36,16 @@ class ListItems(LoginRequiredMixin, generic.DetailView):
 
 class CreateList(LoginRequiredMixin, generic.CreateView):
     model = ShoppingList
-    fields = '__all__'
+    fields = ['title', 'complete']
     success_url = reverse_lazy('shopping-list')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CreateList, self).form_valid(form)
 
 class UpdateList(LoginRequiredMixin, generic.UpdateView):
     model = ShoppingList
-    fields = '__all__'
+    fields = ['title', 'complete']
     success_url = reverse_lazy('shopping-list')
 
 
