@@ -15,7 +15,7 @@ a {
     text-decoration: none;
 }
 
-.purchased {
+.completed {
     text-decoration: line-through;
     color: gray;
 }
