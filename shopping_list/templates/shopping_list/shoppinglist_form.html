@@ -3,7 +3,7 @@
 
 <h3>Create list</h3>
 <a href="{% url 'shopping-list' %}">Go Back</a>
-<form action="" method="post">
+<form method="post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Add Item">

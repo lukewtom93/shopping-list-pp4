@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from .models import ShoppingList
 from django.urls import reverse_lazy
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+import json
 
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -61,6 +65,17 @@ class UpdateList(LoginRequiredMixin, generic.UpdateView):
     model = ShoppingList
     fields = ['title', 'quantity']
     success_url = reverse_lazy('shopping-list')
+
+
+def UpdateComlpletedItem(request, item_id):
+ 
+    data = json.loads(request.body)
+    completed = data.get('completed', False)
+    item = ShoppingList.objects.get(id=item_id)
+    item.complete = completed
+    item.save()
+    return JsonResponse({'status': 'success', 'completed': item.complete})
+
 
 
 class DeleteList(LoginRequiredMixin, generic.DeleteView):
