@@ -7,8 +7,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('register/', views.Register.as_view(), name='register'),
     path('', views.ShoppingLists.as_view(), name='shopping-list'),
-    path('create-list', views.CreateList.as_view(), name='create-list'),
-    path('update-list/<int:pk>/', views.UpdateList.as_view(), name='update-list'),
+    path('create-item', views.CreateItem.as_view(), name='create-item'),
+    path('update-item/<int:pk>/', views.UpdateItem.as_view(), name='update-item'),
     path('update-completed-item/<int:item_id>/', views.UpdateComlpletedItem, name='update-completed-item'),
-    path('delete-list/<int:pk>/', views.DeleteList.as_view(), name='delete-list'),
+    path('delete-item/<int:pk>/', views.DeleteItem.as_view(), name='delete-item'),
 ]

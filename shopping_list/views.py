@@ -52,16 +52,16 @@ class ShoppingLists(LoginRequiredMixin, generic.ListView):
         return context
     
 
-class CreateList(LoginRequiredMixin, generic.CreateView):
+class CreateItem(LoginRequiredMixin, generic.CreateView):
     model = ShoppingList
     fields = ['title', 'quantity']
     success_url = reverse_lazy('shopping-list')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super(CreateList, self).form_valid(form)
+        return super(CreateItem, self).form_valid(form)
 
-class UpdateList(LoginRequiredMixin, generic.UpdateView):
+class UpdateItem(LoginRequiredMixin, generic.UpdateView):
     model = ShoppingList
     fields = ['title', 'quantity']
     success_url = reverse_lazy('shopping-list')
@@ -78,7 +78,7 @@ def UpdateComlpletedItem(request, item_id):
 
 
 
-class DeleteList(LoginRequiredMixin, generic.DeleteView):
+class DeleteItem(LoginRequiredMixin, generic.DeleteView):
     model = ShoppingList
     context_object_name = 'list'
     success_url = reverse_lazy('shopping-list')

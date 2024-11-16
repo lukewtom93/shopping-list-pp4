@@ -10,7 +10,7 @@
 
 <hr>
 <h1>Shopping List</h1>
-<a href="{% url 'create-list' %}">Add</a>
+<a href="{% url 'create-item' %}">Add</a>
 <table id="items-list">
     <tr>
         <th>Item</th>
@@ -20,8 +20,8 @@
     <tr>
         <td data-item-id="{{ list.id }}" class="shopping-item {% if list.complete %}completed{% endif %}">{{list.title}}:
             {{list.quantity}}</td>
-        <td><a href="{% url 'update-list' list.id %}">Edit</a></td>
-        <td><a href="{% url 'delete-list' list.id %}">Delete</a></td>
+        <td><a href="{% url 'update-item' list.id %}">Edit</a></td>
+        <td><a href="{% url 'delete-item' list.id %}">Delete</a></td>
     </tr>
     {% empty %}
     <h3>No items</h3>
