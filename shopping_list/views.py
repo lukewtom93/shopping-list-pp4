@@ -70,7 +70,7 @@ class UpdateList(LoginRequiredMixin, generic.UpdateView):
 def UpdateComlpletedItem(request, item_id):
  
     data = json.loads(request.body)
-    completed = data.get('completed', False)
+    completed = data.get('completed', True)
     item = ShoppingList.objects.get(id=item_id)
     item.complete = completed
     item.save()
