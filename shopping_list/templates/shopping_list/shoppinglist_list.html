@@ -15,17 +15,16 @@
 <hr>
 
 <h1>Shopping List</h1>
-<a href="{% url 'create-item' %}">Add</a>
+
 
 <!-- Items List -->
 <div id="items-list" class="item-list-container">
+    <a href="{% url 'create-item' %}">Add Item</a>
     {% for list in lists %}
         <div data-item-id="{{ list.id }}" class="shopping-item {% if list.complete %}completed{% endif %}">
             <div class="item-title">
                 <i><a href="{% url 'update-item' list.id %}">{{list.title}}:
                     {{list.quantity}}</a></i>
-                <div class="item-complete-icon"><i class="fa-solid fa-circle-check"></i></div>
-                
             </div>
             <a class="delete" href="{% url 'delete-item' list.id %}"><i class="fa-solid fa-trash"></i></a>
         </div>

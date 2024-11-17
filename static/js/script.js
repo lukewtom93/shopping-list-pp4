@@ -2,7 +2,8 @@
 // javascript to apply completed class and update database
 document.addEventListener("DOMContentLoaded", () => {
     const itemsList = document.getElementById("items-list");
-    
+
+
 
     itemsList.addEventListener("click", (event) => {
         const target = event.target;
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return cookieValue;
     }
 });
+
 
 
 

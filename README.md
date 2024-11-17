@@ -49,3 +49,7 @@ Users can create an account and add items delete items and cross out items alrea
 ### Deployment
 
 ### Credits
+
+- Dennis Ivy's article on class based views found [here](https://dennisivy.com/django-class-based-views)
+
+- for auth views and generic views I used the resources found on [ccbv.co.uk](https://ccbv.co.uk/)
