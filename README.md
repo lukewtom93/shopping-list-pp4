@@ -4,6 +4,8 @@ This is a simple shopping list app hosted on Heroku.
 
 Using CRUD views to create a intuative user experience.
 
+![Mockup](static/images/shopping-list-main.png)
+
 [The live version can be found here](https://shopping-list-1951df8955b3.herokuapp.com/)
 
 ## About
@@ -16,13 +18,23 @@ Users can create an account and add items delete items and cross out items alrea
 
 -__Register User__
 
+![Register page](static/images/register-form.png)
+
 -__Login__
+
+![login page](static/images/register-form.png)
 
 -__Create Item__
 
+![Create item](static/images/add-item.png)
+
 -__Delete Item__
 
+![Delete item](static/images/delete-item.png)
+
 -__Cross Off Item__
+
+![Crossed off item](static/images/item-list-complete-example.png)
 
 ### Future Features
 

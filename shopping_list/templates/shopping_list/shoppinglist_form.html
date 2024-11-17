@@ -3,10 +3,13 @@
 <!-- Add Item Page -->
 <h3>Add Item</h3>
 <a href="{% url 'shopping-list' %}">Go Back</a>
-<form method="post">
+<div class="forms">
+    <form method="post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Add Item">
 </form>
+</div>
+
 
 {% endblock content %}
