@@ -2,13 +2,13 @@
 {% block content %}
 <!-- Delete item page -->
 <a href="{% url 'shopping-list' %}">Go Back</a>
-<div class="forms">
-    {% csrf_token %}
-    <p>Are yo sure you want to delete "{{ list.title }}"?</p>
-    <input type="submit" value="Delete">
-</div>
+
 <form method="post">
-    
+    <div class="forms">
+        {% csrf_token %}
+        <p>Are yo sure you want to delete "{{ list.title }}"?</p>
+        <input type="submit" value="Delete">
+    </div>
     
 </form>
 
