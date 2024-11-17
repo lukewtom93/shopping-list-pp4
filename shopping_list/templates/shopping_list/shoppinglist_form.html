@@ -1,7 +1,7 @@
 {% extends 'shopping_list/main.html' %}
 {% block content %}
-
-<h3>Create list</h3>
+<!-- Add Item Page -->
+<h3>Add Item</h3>
 <a href="{% url 'shopping-list' %}">Go Back</a>
 <form method="post">
     {% csrf_token %}

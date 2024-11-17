@@ -1,6 +1,8 @@
 {% extends 'shopping_list/main.html' %}
 {% block content %}
+<!-- Shopping List main page -->
 
+ <!-- Header -->
 <div class="custom-header">
     {%  if request.user.is_authenticated %}
     <p>{{request.user}}</p>
@@ -15,6 +17,7 @@
 <h1>Shopping List</h1>
 <a href="{% url 'create-item' %}">Add</a>
 
+<!-- Items List -->
 <div id="items-list" class="item-list-container">
     {% for list in lists %}
         <div data-item-id="{{ list.id }}" class="shopping-item {% if list.complete %}completed{% endif %}">

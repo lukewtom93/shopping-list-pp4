@@ -1,4 +1,5 @@
 
+// javascript to apply completed class and update database
 document.addEventListener("DOMContentLoaded", () => {
     const itemsList = document.getElementById("items-list");
     
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const itemId = target.getAttribute("data-item-id");
         const Completed = target.classList.contains("completed");
 
+        // Requst to update item status
         fetch(`/update-completed-item/${itemId}/`, {
             method: "POST",
             headers: {
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 });
-
+    // Helper Function to get CSRF token
     function getCsrfToken() {
         const cookieValue = document.cookie
             .split("; ")
