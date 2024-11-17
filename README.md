@@ -52,13 +52,37 @@ Users can create an account and add items delete items and cross out items alrea
 
 ## Testing
 
+- using google chrome lighthouse 
+![lighthouse](static/images/lighthouse-performance.png)
+
+### Validator Testing
+
+- HTML
+  - No errors were returned when passing through the official W3C HTML Validator
+- CSS
+  - No errors were found when passing through the official W3C CSS Validator (Jigsaw)
+- Python
+  - Passed the code through the PEP8 linter and confirmed there are no problems
+- Javascript
+  - JShint was used to validate JS code for the website.
+
 ### Automated Tests
 
 - Testing for the register page is run with python3 manage.py test
 
-###
-
 ### Deployment
+
+- Steps for deployment
+
+    - Fork or clone this repository
+
+    - Create a new Heroku app
+
+    - Link the Heroku app to the repository
+
+    - Set Debug to FALSE
+
+    - Click on __Deploy__
 
 ### Credits
 

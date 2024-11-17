@@ -12,6 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
+
 # Login View
 class Login(LoginView):
     template_name = 'shopping_list/login.html'
@@ -20,6 +21,7 @@ class Login(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('shopping-list')
+
 
 # Register View
 class Register(generic.FormView):
@@ -31,7 +33,7 @@ class Register(generic.FormView):
     def form_valid(self, form):
         """
         Saves the form data to the database
-        from a new user and loggs them in. 
+        from a new user and loggs them in.
         """
         user = form.save()
         if user is not None:
@@ -49,6 +51,7 @@ class Register(generic.FormView):
             return redirect('shopping-list')
         return super(Register, self).get(*args, **kwargs)
 
+
 # Shopping list main page view
 class ShoppingLists(LoginRequiredMixin, generic.ListView):
     model = ShoppingList
@@ -60,10 +63,11 @@ class ShoppingLists(LoginRequiredMixin, generic.ListView):
         template is user specific data
         """
         context = super().get_context_data(**kwargs)
-        context['lists'] = context['lists'].filter(user = self.request.user)
+        context['lists'] = context['lists'].filter(user=self.request.user)
         context['count'] = context['lists'].filter(complete=False)
         return context
-    
+
+
 # Create Item view
 class CreateItem(LoginRequiredMixin, generic.CreateView):
     model = ShoppingList
@@ -78,17 +82,20 @@ class CreateItem(LoginRequiredMixin, generic.CreateView):
         form.instance.user = self.request.user
         return super(CreateItem, self).form_valid(form)
 
+
 # Update Item view
 class UpdateItem(LoginRequiredMixin, generic.UpdateView):
     model = ShoppingList
     fields = ['title', 'quantity']
     success_url = reverse_lazy('shopping-list')
 
+
 # Delete Item View
 class DeleteItem(LoginRequiredMixin, generic.DeleteView):
     model = ShoppingList
     context_object_name = 'list'
     success_url = reverse_lazy('shopping-list')
+
 
 # Completed Item function
 def UpdateComlpletedItem(request, item_id):
