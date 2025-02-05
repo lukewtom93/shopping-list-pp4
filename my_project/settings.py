@@ -29,9 +29,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-g1g_g5!7jgv3lqx1jr$xye2oy*t$q-xwh54*guq85t5dka&37o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['8000-lukewtom93-shoppinglist-wh6bggu56j5.ws.codeinstitute-ide.net','.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com']
 
 
 # Application definition
@@ -97,7 +97,7 @@ if 'test' in sys.argv:
     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-lukewtom93-shoppinglist-wh6bggu56j5.ws.codeinstitute-ide.net'
+    'https://localhost'
 ]
 
 
