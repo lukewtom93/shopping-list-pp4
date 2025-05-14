@@ -50,6 +50,13 @@ Users can create an account and add items delete items and cross out items alrea
 
 -__Database__: SQlite, PostgreSQL
 
+
+### Wire Frames and Mockups
+
+- I used balsamiq to create some wire frames for the Login, Registration and Main Page
+
+![](static\images\register-wireframe.png)![](static\images\Login-wireframe.png)![](static\images\Main-wireframe.png)
+
 ## Testing
 
 - using google chrome lighthouse 
@@ -68,7 +75,20 @@ Users can create an account and add items delete items and cross out items alrea
 
 ### Automated Tests
 
-- Testing for the register page is run with python3 manage.py test
+- Python Automated Tests are implimented for user registration, login and logout authentication
+- And for the CRUD functionality within the app
+
+- Javascript Automated tests are implimented on the update of an added item
+
+For the Python tests use the terminal command
+```bash
+python manage.py test
+```
+
+For the Javascript Test use the terminal command
+```bash
+npm test
+```
 
 ### Deployment
 
