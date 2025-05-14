@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch(`/update-completed-item/${itemId}/`, {
             method: "POST",
             headers: {
-                "Content-Type": "aplication/json",
+                "Content-Type": "application/json",
                 "X-CSRFToken": getCsrfToken(),
             },
             body: JSON.stringify({ complete: Completed }),
