@@ -90,19 +90,140 @@ For the Javascript Test use the terminal command
 npm test
 ```
 
-### Deployment
+## Setup and Deployment Guide
 
-- Steps for deployment
+### Prerequisites
 
-    - Fork or clone this repository
+- Ensure you have the following installed:
+  - Python (3.8 or later)
+  - Node.js and npm 
+  - PostgreSQL
+  - Git
+  - A cloud hosting platform
 
-    - Create a new Heroku app
+## Local Setup
 
-    - Link the Heroku app to the repository
+### Step 1: Clone the Repository
 
-    - Set Debug to FALSE
+```bash
+git clone <https://github.com/lukewtom93/shopping-list-pp4>
+cd shopping-list-pp4
+```
 
-    - Click on __Deploy__
+### Step 2: Create a Virtual Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+### Step 3: Install Python Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Set Up the Database
+
+1. Update `settings.py` with your database configuration:
+```bash
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '<database_name>',
+        'USER': '<database_user>',
+        'PASSWORD': '<database_password>',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+```
+
+2. Apply Migrations:
+```bash
+python manage.py migrate
+```
+
+### Step 5: Collect Static Files
+
+```bash
+python manage.py collectstatic
+```
+
+### Step 6: Run the Development Server
+
+```bash
+python manage.py runserver
+```
+Visit `http://127.0.0.1:8000` in your browser to verify the application is running.
+
+## Frontend Setup
+
+### Step 1: Install JavaScript Dependencies
+
+Navigate to the directory containing your JavaScript files and run:
+
+```bash
+npm install
+```
+### Step 2: Run Tests
+
+Run Jest tests to ensure your JavaScript functionality works:
+
+```bash
+npm test
+```
+
+## Deployment
+
+### Step 1: Prepare for Deployment
+
+1. Update `ALLOWED_HOSTS` in `settings.py`:
+```bash
+ALLOWED_HOSTS = ['your-domain.com']
+```
+2. Set `DEBUG = False` in `settings.py`.
+
+### Step 2: Configure Static Files
+
+Ensure `WhiteNoise` is installed and configured in `settings.py`:
+
+```bash
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+]
+```
+
+### Step 3: Deploy to Hosting Platform
+- Heroku:
+
+1. Install the Heroku CLI and log in:
+```bash
+heroku login
+```
+2. Create a new Heroku app:
+```bash
+heroku create
+```
+3. Add PostgreSQL to your app:
+```bash
+heroku addons:create heroku-postgresql:hobby-dev
+```
+4. Push your code to Heroku:
+```bash
+git push heroku main
+```
+5. Run migrations on Heroku:
+```bash
+heroku run python manage.py migrate
+```
+
+Other Platforms: Follow their specific deployment instructions for Django applications.
+
+### Step 4: Verify Deployment
+Visit your deployed application’s URL to ensure everything works as expected.
+
 
 ### Credits
 
