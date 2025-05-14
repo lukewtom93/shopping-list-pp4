@@ -15,4 +15,9 @@
    "files.autoSave": "afterDelay",
    "workbench.colorTheme": "Visual Studio Dark",
    "terminal.integrated.gpuAcceleration": "canvas",
+   "python.testing.pytestArgs": [
+      "shopping_list"
+   ],
+   "python.testing.unittestEnabled": false,
+   "python.testing.pytestEnabled": true,
 }
