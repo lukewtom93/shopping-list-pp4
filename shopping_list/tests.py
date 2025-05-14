@@ -22,6 +22,13 @@ class AuthenticationTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertTrue('_auth_user_id' in self.client.session)
 
+    def test_user_logout(self):
+        User.objects.create_user(username='testuser', password='StrongPass123')
+        self.client.login(username='testuser', password='StrongPass123')
+        response = self.client.post('/logout/')
+        self.assertEqual(response.status_code, 302)
+        self.assertFalse('_auth_user_id' in self.client.session)
+
 
 class ItemTests(TestCase):
     def setUp(self):
