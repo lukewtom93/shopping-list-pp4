@@ -66,10 +66,13 @@ Users can create an account and add items delete items and cross out items alrea
 
 - HTML
   - No errors were returned when passing through the official W3C HTML Validator
+  ![W3C-Validator](static\images\HTML-Validator-test.png)
 - CSS
   - No errors were found when passing through the official W3C CSS Validator (Jigsaw)
+  ![CSS-Validator](static\images\CSS-Validation.png)
 - Python
   - Passed the code through the PEP8 linter and confirmed there are no problems
+  ![Python-Validator](static\images\Python-Validation-example.png)
 - Javascript
   - JShint was used to validate JS code for the website.
 
