@@ -81,8 +81,10 @@ Users can create an account and add items delete items and cross out items alrea
 
 - Python Automated Tests are implimented for user registration, login and logout authentication
 - And for the CRUD functionality within the app
+![Python-test-results](static\images\Python-test-results.png)
 
 - Javascript Automated tests are implimented on the update of an added item
+![Javascript-test-results](static\images\Javascript-test-results.png)
 
 For the Python tests use the terminal command
 ```bash
