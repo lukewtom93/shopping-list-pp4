@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "X-CSRFToken": getCsrfToken(),
             },
             body: JSON.stringify({ complete: Completed }),
-        })
+        });
     }
 });
     // Helper Function to get CSRF token

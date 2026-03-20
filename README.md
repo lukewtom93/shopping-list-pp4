@@ -75,6 +75,7 @@ Users can create an account and add items delete items and cross out items alrea
   ![Python-Validator](static\images\Python-Validation-example.png)
 - Javascript
   - JShint was used to validate JS code for the website.
+  ![Javascript-Validator](static\images\Javascript-Validation.png)
 
 ### Automated Tests
 
